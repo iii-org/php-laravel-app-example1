@@ -52,22 +52,20 @@ stages:
       catalogTemplate: cattle-global-data:iii-dev-charts3-db
       version: 0.1.1
       name: ${CICD_GIT_REPO_NAME}-${CICD_GIT_BRANCH}-db
-      #targetNamespace: p-v2nzs-pipeline
       targetNamespace: ${CICD_GIT_REPO_NAME}
       answers:
-        # 這裡是為了50與140環境測試
         git.host: "http://gitlab.iiidevops.10.20.0.73.xip.io/"
         # 這裡是為了告訴要處理的git來源為何
         git.repoName: ${CICD_GIT_REPO_NAME}
         git.branch: ${CICD_GIT_BRANCH}
-        db.type: postgresql
-        db.tag: 9.6
+        db.type: mysql
+        db.tag: latest
         db.gui: true
         # 使用者資料庫管理密碼
         db.username: bear
         db.password: IIIdevops123!
         # 使用者初始想要建立的資料庫名稱
-        db.name: tododb
+        db.name: example
     when:
       branch:
         include:
